@@ -58,4 +58,18 @@ public class FormStepdefs {
         formPage.fillsInTheCareerField(answer);
     }
 
+    @Then("A message showing an error {string} for the date field shows up")
+    public void aMessageShowingAnErrorMessageForTheDateFieldShowsUp(String errorMessage) throws InterruptedException {
+        Thread.sleep(5000);
+        Boolean errorMessageDisplayed = webDriver.findElement(By.xpath("//div[@class='date-picker']/following-sibling::span//div[contains(text(),'" +
+                errorMessage +
+                "')]")).isDisplayed();
+        assertThat(errorMessageDisplayed).isTrue();
+    }
+
+    @Then("the date field match the input value {string}")
+    public void theDateFieldMatchTheInputValueLifeRayFoundationDate(String inputDate) {
+        String dateInForm = webDriver.findElement(By.xpath("//div[@class='date-picker']//input[@dir='ltr']")).getAttribute("value");
+        assertThat(dateInForm).isEqualTo(inputDate);
+    }
 }
