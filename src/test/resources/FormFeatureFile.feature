@@ -10,4 +10,4 @@ Feature: Liferay Form
 
     Examples:
       | Football.Player | LifeRay.Foundation.Date | Test.Field         | Message             |
-      | "Pele"          | "01/01/2000"            | "'cause it's cool" | "Tipo di struttura" |
+      | "Pele"          | "01/01/2000"            | "'cause it's cool" | "Thank you" |
