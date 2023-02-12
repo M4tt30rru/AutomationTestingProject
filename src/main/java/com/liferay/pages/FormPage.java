@@ -28,4 +28,8 @@ public class FormPage {
     public void getTo() {
         webDriver.navigate().to("https://forms.liferay.com/web/forms/shared/-/form/122548");
     }
+
+    public void fillsInTheCareerField(String answer) {
+        webDriver.findElement(By.xpath("//textarea")).sendKeys(answer);
+    }
 }

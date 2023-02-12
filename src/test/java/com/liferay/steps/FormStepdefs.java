@@ -55,7 +55,7 @@ public class FormStepdefs {
 
     @And("the user fills {string} value in the career question input")
     public void theUserFillsTestFieldValueInTheCareerQuestionInput(String answer) {
-        webDriver.findElement(By.xpath("//textarea")).sendKeys(answer);
+        formPage.fillsInTheCareerField(answer);
     }
 
 }
