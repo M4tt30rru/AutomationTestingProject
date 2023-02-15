@@ -8,6 +8,10 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -35,11 +39,10 @@ public class FormStepdefs {
 
     @Then("A message showing the following {string} shows up")
     public void aMessageShowingTheFollowingMessageShowsUp(String message) throws InterruptedException {
-        // TODO temporary, to be change into a waiting condition
-        Thread.sleep(5000);
-        Integer messageOccurrencesNum = webDriver.findElements(By.xpath("//h2[contains(text(),'" +
-                message +
-                "')]")).size();
+        WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(5));
+        By messageLocator = By.xpath("//h2[contains(text(),'" + message + "')]");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(messageLocator));
+        Integer messageOccurrencesNum = webDriver.findElements(messageLocator).size();
         assertThat(messageOccurrencesNum).isEqualTo(1);
     }
 
@@ -60,10 +63,10 @@ public class FormStepdefs {
 
     @Then("A message showing an error {string} for the date field shows up")
     public void aMessageShowingAnErrorMessageForTheDateFieldShowsUp(String errorMessage) throws InterruptedException {
-        Thread.sleep(5000);
-        Boolean errorMessageDisplayed = webDriver.findElement(By.xpath("//div[@class='date-picker']/following-sibling::span//div[contains(text(),'" +
-                errorMessage +
-                "')]")).isDisplayed();
+        WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(5));
+        By messageLocator = By.xpath("//div[@class='date-picker']/following-sibling::span//div[contains(text(),'" + errorMessage + "')]");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(messageLocator));
+        Boolean errorMessageDisplayed = webDriver.findElement(messageLocator).isDisplayed();
         assertThat(errorMessageDisplayed).isTrue();
     }
 
