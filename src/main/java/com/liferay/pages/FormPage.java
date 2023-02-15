@@ -11,7 +11,9 @@ public class FormPage {
         this.webDriver = webDriver;
     }
 
-    public void fillInTheFoundationDateField(String date) {
+    public void fillInTheFoundationDateField(String date) throws InterruptedException {
+        // TODO temporary, to be change into a waiting condition
+        Thread.sleep(5000);
         webDriver.findElement(By.xpath("//div[@class='date-picker']//input[@dir='ltr']")).sendKeys(date);
     }
 

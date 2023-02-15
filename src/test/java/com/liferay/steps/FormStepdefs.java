@@ -49,7 +49,7 @@ public class FormStepdefs {
     }
 
     @And("the user fills {string} value in the LifeRay foundation input")
-    public void theUserFillsLifeRayFoundationDateValueInTheLifeRayFoundationInput(String date) {
+    public void theUserFillsLifeRayFoundationDateValueInTheLifeRayFoundationInput(String date) throws InterruptedException {
         formPage.fillInTheFoundationDateField(date);
     }
 
